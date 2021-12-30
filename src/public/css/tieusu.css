@@ -1,5 +1,6 @@
 .search{
-	border: 1px solid red;
+	border: 3px solid red;
+	margin-top: 20px;;
 }
 span.text-color{
 	color: gray;

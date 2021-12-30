@@ -3,7 +3,81 @@
 <head>
     <%- include ('layout/link')  %> 
     <%- include('layout/link-head') %> 
+<style>
+    .products{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 
+}
+.product{
+    
+    width:23%;
+    display: inline-block;
+    margin-left: 1%;
+    border: 1px solid  darkgray;
+    text-align: left; 
+    text-align: left;
+    padding: 10px 10px;
+    
+}
+.product img{
+ 
+  width:100%;
+  height: 350px;
+}
+.detail{
+    width:100%;
+    position: relative;
+
+}
+.product-detail{
+    margin-top: 60px;
+    position: absolute;
+    width: 96%;
+    margin-left: 2%;
+    height: 200px;
+    border-radius: 10px;
+    padding: 10px 10px;
+    border: 1px solid black;
+    background-color:white;;
+    opacity: 0.9;
+}
+
+.product-categories > a{
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    background-color:rgb(206, 206, 206);
+    padding:5px 10px;
+   border-radius: 10px;
+   font-size: 13px;;
+}
+.product-detail {
+    display: none ;
+    
+}
+.product:hover .product-detail  {
+    display: block;
+
+}
+.detail > h5 {
+    margin-top: 20px;
+    position: absolute;
+    background-color:red;
+    color: white;
+    padding:5px 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.name-page h5 {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 25px;
+}
+</style>
     <link rel="stylesheet" href="/css/tieusu.css">
 </head>
 <body>
@@ -28,29 +102,33 @@
 				    </div>
                 </form>
 		    </div>
-            <div class="container mt-4">
-                <div class="row">
-                    <% biographys.forEach(function(biography) { %>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
-                            <div class="card">
-                                 <div class="img-name">
-                                    <a href="/tieusu/<%= biography.slug %>">
-                                        <img src="<%= biography.image %>" alt="" class="img-thumbnail w-100 h-100">
-                                    </a>
-                                </div>
-                                  <div class="card-body">
-                                       <h5 class="card-title mt-2 text-center"><%= biography.name %></h5>
-                                    <p class="card-text text-center"><%= biography.stageName %> </p>
-                                    <div class="d-flex content-info"><i class="fas fa-info-circle mt-1 mr-2"></i><p class=" m-0 p-0 text-content"><%= biography.description %></p></div>
-                                    <a href="">
-                                        <a href="/tieusu/<%= biography.slug %>" class="btn btn-danger col-lg-5 mt-3">Chi Tiết</a>
-                                    </a>
-                                 </div>
-                            </div>
-                        </div>
-                    <% }) %> 
-                </div>
+            <div class="name-page">
+                <h5>Người nổi tiếng</h5>
             </div>
+       <div class="products">
+        <% biographys.forEach(function(biography) { %>
+        <div class="product">
+            <div class="detail">
+                    <h5><%= biography.name %></h5>
+              <a href="/tieusu/<%= biography.slug %>">
+                <div class="product-detail">
+             <p><%= biography.description %></p>
+                </div>
+              </a>
+              </div>
+            <img src="<%= biography.image %>" alt="">
+        <div class="product-categories">
+            <a ><%= biography.stageName %></a>
+            <a href="">Diễn viên</a>
+        </div>
+
+        </div>
+        <% }) %> 
+      
+  
+   
+      
+       </div>
     </main>
     <footer>
         <%- include ('layout/footer') %> 
